@@ -1,0 +1,17 @@
+<html>
+  <head>
+<script>
+            function audioPlay() {
+                var audio = document.getElementById("audio");
+                audio.volume = 0.25
+                audio.play()
+            }
+        </script>
+<audio loop preload="auto" id="audio">
+<source src="https://sources.tobir.xyz/rk.mp3" type="audio/mp3">
+</audio>
+  </head>
+  <body>
+    <img src="https://sources.tobir.xyz/panel.png" onclick="audio.play()">
+  </body>
+</html>
