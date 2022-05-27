@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <title>Přihlašovací stránka &ndash; Školní portál |  https://www.edookit.com</title>
+        <meta name="msapplication-config" content="none">
+        <meta name="robots" content="noindex">
+        <meta name="edoo-time" content="1653670719366">
+        <meta name="keywords" content="rodiče, studenti, portál, vzdělávání, komunikace, informační systém">
+        <meta name="description" content="Rodičovský portál pro vzájemnou komunikaci školy s rodiči a studenty.">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+
+        <link href="https://zsmarianske.edookit.net/css/styles.css?v=1653097289" rel="stylesheet">
+        <link rel="shortcut icon" href="https://zsmarianske.edookit.net/favicon.ico">
+        <link rel="manifest" href="https://zsmarianske.edookit.net/progressive-app/manifest?version=1650514756">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="ZŠ Uherský Brod">
+        <link rel="apple-touch-icon" href="https://zsmarianske.edookit.net/images/icons/icon-192.png">
+        <meta name="msapplication-TileImage" content="https://zsmarianske.edookit.net/images/icons/icon-192.png">
+        <meta name="msapplication-TileColor" content="#FFFFF">
+
+        <script>
+            function reportIllustrationSize() {
+                var els = document.getElementsByClassName('responsive-illustration');
+
+                for(var i = 0; i < els.length; i++) {
+                    var el = els[i];
+                    if (el !== null) {
+                        if (el.getAttribute('data-width0') > window.innerWidth - 32 && el.getAttribute('width') <= el.getAttribute('data-width0')) {
+                            el.setAttribute('width', window.innerWidth - 32);
+                        } else {
+                            el.setAttribute('width', el.getAttribute('data-width0'));
+                        }
+                    }
+                }
+            }
+
+            navigator.serviceWorker && navigator.serviceWorker.register("" + '/service-worker.js');
+
+            window.addEventListener("resize", reportIllustrationSize);
+            window.addEventListener("load", reportIllustrationSize);
+
+            function toggleElement(el) {
+                if (el) {
+                    if (window.getComputedStyle(el).getPropertyValue('display') === 'none') {
+                        el.style.display = 'block';
+                    } else {
+                        el.style.display = 'none';
+                    }
+                }
+            }
+        </script>
+
+        <script type="text/javascript" src="https://zsmarianske.edookit.net/js/bootstrap.js?v=111"></script>
+        <script type="text/javascript" src="https://zsmarianske.edookit.net/js/jquery-1.8.3.min.js?v=111"></script>
+        <script type="text/javascript" src="https://zsmarianske.edookit.net/js/External/nette.ajax.min.js?v=111"></script>
+        <script type="text/javascript" src="https://zsmarianske.edookit.net/js/before-load.js?v=111"></script>
+        <script type="text/javascript">
+            function isIE() {
+                var myNav = navigator.userAgent.toLowerCase();
+                return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
+            }
+
+            if (!((isIE() && isIE() >= 9))) {
+                document.write('<script src="https://zsmarianske.edookit.net/js/compatibility.js"></scr' + 'ipt><script src="https://zsmarianske.edookit.net/js/pdf.js"></scr' + 'ipt>');
+            }
+
+            function checkboxClick(name) {
+                if (document.getElementsByName(name)[0].getAttribute('value') === '1') {
+                    document.getElementsByName(name)[0].value = 0;
+                    appendClass(document.getElementById(name + '-checkbox'), 'unchecked');
+                    removeClass(document.getElementById(name + '-checkbox'), 'checked');
+                } else {
+
+                    appendClass(document.getElementById(name + '-checkbox'), 'checked');
+                    removeClass(document.getElementById(name + '-checkbox'), 'unchecked');
+                    document.getElementsByName(name)[0].value = 1;
+                }
+            }
+
+            function appendClass(el, className) {
+                if (el) {
+                    el.className = el.className + ' ' + className;
+                }
+            }
+
+            function removeClass(el, className) {
+                var newClassName = "";
+                var i;
+                var classes = el.className.split(" ");
+                for(i = 0; i < classes.length; i++) {
+                    if(classes[i].trim() !== className) {
+                        newClassName += classes[i].trim() + " ";
+                    }
+                }
+                el.className = newClassName;
+            }
+
+            function toggleDisplay(id, display) {
+                var el = document.getElementById(id);
+
+                if (el) {
+                    if (window.getComputedStyle(el).getPropertyValue('display') === 'none') {
+                        el.style.display = display;
+                    } else {
+                        el.style.display = 'none';
+                    }
+                }
+            }
+
+            function toggle(id) {
+                toggleDisplay(id, 'block');
+            }
+
+        </script>
+        <script src="https://zsmarianske.edookit.net/js/Main.js?v=111"></script>
+        <script src="https://zsmarianske.edookit.net/js/External/editor.js?v=111"></script>
+        <script src="https://zsmarianske.edookit.net/js/External/Edoo.js?v=111"></script>
+        <script src="https://zsmarianske.edookit.net/js/External/Edoo.Last.js?v=111"></script>
+        <script src="https://zsmarianske.edookit.net/js/External/fastclick.js?v=111"></script>
+        <script src="https://zsmarianske.edookit.net/js/External/jquery.autosize.js?v=111"></script>
+        <script src="https://zsmarianske.edookit.net/js/External/jquery.magnific-popup.js?v=111"></script>
+        <script src="https://zsmarianske.edookit.net/js/External/jquery.tinymce.min.js?v=111"></script>
+        <script src="https://zsmarianske.edookit.net/js/External/jquery-te-1.4.0.min.js?v=111"></script>
+        <script src="https://zsmarianske.edookit.net/js/External/jquery-ui-1.11.4.min.js?v=111"></script>
+    </head>
+    <body id="top" class="new">
+
+    <div id="loading" class="loading-notification">
+        Načítání
+    </div>
+
+    <div id="loading-notification-overlay" class="loading-notification-overlay"></div>
+
+
+    <script type="text/javascript">
+        var ignoreLoading = false;
+
+        function ignore() {
+            ignoreLoading = true;
+        }
+        function doNotIgnore() {
+            ignoreLoading = false;
+        }
+
+        window.addEventListener('load', function(){
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("loading-notification-overlay").style.display = "none";
+
+            $.nette.ext({
+                success: function () {
+                    document.getElementById("loading-notification-overlay").style.display = "none";
+                }
+            });
+        }, true);
+
+        window.addEventListener('stop', function(){
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("loading-notification-overlay").style.display = "none";
+        }, true);
+
+        window.addEventListener('abort', function(){
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("loading-notification-overlay").style.display = "none";
+        }, true);
+
+        document.getElementById('loading').addEventListener('click', function(){
+            document.getElementById("loading").style.display = "none";
+        }, true);
+
+        window.addEventListener('error', function(){
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("loading-notification-overlay").style.display = "none";
+        }, true);
+
+        window.addEventListener('beforeunload', function(){
+            if (!ignoreLoading) {
+                showLoadingNotification()
+            }
+            ignoreLoading = false;
+        }, true);
+
+        function showLoadingNotification() {
+            document.getElementById("loading").style.display = "block";
+            document.getElementById("loading-notification-overlay").style.display = "block";
+        }
+
+        function hideLoadingNotification() {
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("loading-notification-overlay").style.display = "none";
+        }
+    </script>
+        <div class="header-container">
+        </div>
+
+        <div class="holder-container">
+
+<div class="login-page-container outside-page-container">
+    <div class="logo-container">
+        <img src="https://zsmarianske.edookit.net/images/logo/edookit-logo-official.png" class="system-logo" alt="Logo" />
+    </div>
+    <div class="huge-text-container">
+        <span class="huge-text">Pro rodiče a žáky<span>
+    </div>
+<!--[if lte IE 8]>
+    <div class="flashes">
+        <div class="flash error">
+            Používáte zastaralý internetový prohlížeč. Stránka nebude správně zobrazena a některé funkce portálu budou vypnuty. Doporučujeme aktualizovat Váš prohlížeč na nejnovější verzi nebo použít jiný, například  <a href="https://www.google.com/chrome/" target="_blank">Chrome</a>.</div>
+    </div>
+<![endif]-->
+<div class="flashes" >
+</div>
+
+
+    <div class="login-form-container">
+
+<form action="https://zsmarianske.edookit.net/user/login" method="post" class="standalone whole-width disable-double-click-check" id="frm-loginForm-form">
+    <div class="school-name-container" style="margin-top: 8px;">
+        <span class="school-name-text">ZŠ Uherský Brod</span>
+    </div>
+
+
+
+    <div class="label">
+        <label for="username">Přihlašovací jméno:</label>
+    </div>
+    <div class="input username" id="username-container">
+        <input type="text" name="username" maxlength="50" placeholder="Zadejte Vaše přihlašovací jméno" id="username" autofocus required data-nette-rules='[{"op":":filled","msg":"Zadejte prosím své přihlašovací jméno."},{"op":":maxLength","msg":"Přihlašovací jméno může mít maximálně 50 znaků.","arg":50}]'>
+        <div class="edit-username" id="edit-username" style="display:none;">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" width="22" height="22">
+	<path fill="#8A8D95"  d="M 23.90625 3.96875 C 22.859375 3.96875 21.8125 4.375 21 5.1875 L 5.1875 21 L 5.125 21.3125 L 4.03125 26.8125 L 3.71875 28.28125 L 5.1875 27.96875 L 10.6875 26.875 L 11 26.8125 L 26.8125 11 C 28.4375 9.375 28.4375 6.8125 26.8125 5.1875 C 26 4.375 24.953125 3.96875 23.90625 3.96875 Z M 23.90625 5.875 C 24.410156 5.875 24.917969 6.105469 25.40625 6.59375 C 26.378906 7.566406 26.378906 8.621094 25.40625 9.59375 L 24.6875 10.28125 L 21.71875 7.3125 L 22.40625 6.59375 C 22.894531 6.105469 23.402344 5.875 23.90625 5.875 Z M 20.3125 8.71875 L 23.28125 11.6875 L 11.1875 23.78125 C 10.53125 22.5 9.5 21.46875 8.21875 20.8125 Z M 6.9375 22.4375 C 8.136719 22.921875 9.078125 23.863281 9.5625 25.0625 L 6.28125 25.71875 Z "https://zsmarianske.edookit.net/>
+</svg>
+        </div>
+    </div>
+
+    <div class="label">
+        <label for="password">Heslo:</label>
+    </div>
+    <div class="input password">
+<div id="snippet-loginForm-password">            <input type="password" name="password" placeholder="Zadejte Vaše heslo" id="password" required data-nette-rules='[{"op":":filled","msg":"Zadejte prosím své heslo."}]'>
+</div>
+        <div class="show-password"
+             onmousedown="changeInput()"
+             onmouseup="changeInput()"
+             ontouchstart="changeInput()"
+             ontouchend="changeInput()">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22" height="13"
+     viewBox="0 0 22 13">
+	<g fill="none" fill-rule="evenodd">
+		<path fill="#8A8D95" fill-rule="nonzero"
+		      d="M11 .91C5.033.91.44 6.166.44 6.166l-.425.47.425.47s4.188 4.773 9.755 5.212c.266.034.53.045.805.045s.54-.011.805-.045c5.567-.44 9.755-5.213 9.755-5.213l.425-.47-.425-.47S16.967.91 11 .91zm0 1.43c1.576 0 3.032.432 4.295 1.008a4.94 4.94 0 0 1 .716 2.572 5.007 5.007 0 0 1-4.452 4.99c-.015.001-.03-.002-.044 0-.171.01-.341.022-.515.022-.189 0-.374-.011-.56-.023A5.007 5.007 0 0 1 5.99 5.92c0-.934.25-1.802.693-2.55H6.66C7.934 2.783 9.405 2.34 11 2.34zm0 1.433a2.148 2.148 0 1 0 0 4.295 2.148 2.148 0 0 0 0-4.295zm-6.264.67c-.113.48-.18.966-.18 1.477 0 1.256.36 2.43.985 3.423a16.532 16.532 0 0 1-3.467-2.707 17.222 17.222 0 0 1 2.662-2.192zm12.528 0a17.222 17.222 0 0 1 2.662 2.193c-.41.42-1.663 1.666-3.467 2.707a6.401 6.401 0 0 0 .984-3.423c0-.51-.067-1-.179-1.476z"https://zsmarianske.edookit.net/>
+	</g>
+</svg>
+        </div>
+    </div>
+
+    <div id="captcha-container" style="display: none;">
+        <div class="flashes">
+            <div style="margin-top: 24px;" class="flash info form">
+                Prosím, potvrďte:
+            </div>
+        </div>
+
+        <div class="input">
+            <div>
+                <div name="captcha" id="frm-loginForm-form-captcha" class="g-recaptcha" data-sitekey="6LeUVRcUAAAAAPeZMN3nzrbGqAnktq63YWqWQCaj"></div><script src="https://www.google.com/recaptcha/api.js?hl=cs"></script>
+            </div>
+        </div>
+    </div>
+
+    <div class="split-container">
+        <div class="remember-me-checkbox">
+                
+                        <div class="checkbox-container " onclick="checkboxClick('remember');">
+                            <div class="checkbox unchecked" id="remember-checkbox">
+                            </div><div class="checkbox-label">
+                                                    Zůstat přihlášen
+
+                            </div>
+                        </div>  
+                    
+        </div><!--
+            --><div class="forgotten-password-link" id="desktop-link">
+            <a href="https://zsmarianske.edookit.net/user/forgotten-password">Problémy s přihlášením</a>
+        </div>
+
+    </div>
+<div id="snippet-loginForm-send">        <div class="submit">
+            <input type="submit" name="send" class="primary" id="login" value="Přihlásit">
+        </div>
+</div>
+    <input type="hidden" name="remember" value="">
+    <div class="forgotten-password-link" id="mobile-link">
+        <a href="https://zsmarianske.edookit.net/user/forgotten-password">Problémy s přihlášením</a>
+    </div>
+
+<input type="hidden" name="_do" value="loginForm-form-submit"></form>
+
+
+<script>
+
+    function captchaExists() {
+        var captcha = document.getElementById('captcha-container');
+        return captcha && captcha.style.display !== 'none';
+    }
+
+    $("form").submit(function(event) {
+
+        if (captchaExists()) {
+            $(".g-recaptcha-response").each(function () {
+                if ($(this).val() === "") {
+                    event.preventDefault();
+                    alert("Prosíme, potvrďte níže, že nejste robot.");
+                    return false;
+                }
+            });
+        }
+    });
+    function changeInput() {
+        var input = document.getElementById('password');
+
+        if (input.getAttribute('type') === 'password') {
+            input.setAttribute('type', 'text');
+        } else {
+            input.setAttribute('type', 'password');
+        }
+    }
+
+    document.getElementById('login').addEventListener('click', showLoadingNotification());
+
+
+    var usernameContainer = document.getElementById('username-container');
+    var username = document.getElementById('username');
+
+    var password = document.getElementById('password');
+
+    usernameContainer.addEventListener('click', function () {
+        usernameIn();
+    });
+
+    usernameContainer.addEventListener('blur', usernameOut);
+    usernameContainer.addEventListener('focusout', usernameOut);
+    usernameContainer.addEventListener('focus', usernameIn);
+    usernameContainer.addEventListener('focusin', usernameIn);
+
+
+    if (username !== document.activeElement) {
+        usernameOut();
+    }
+
+    function usernameIn()
+    {
+        usernameContainer.className = 'input';
+        document.getElementById('edit-username').style.display = 'none';
+        username.select();
+    }
+
+    function usernameOut()
+    {
+        if(username.value.length > 0) {
+            document.getElementById('edit-username').style.display = 'block';
+            usernameContainer.className = 'input editable';
+            checkCaptcha();
+        }
+    }
+
+    function checkCaptcha()
+    {
+        if (captchaExists()) {
+            var link = "https://zsmarianske.edookit.net/user/login?do=loginForm-checkCaptcha";
+            var fullLink = link + '&loginForm-username=' + username.value;
+            $.nette.ajax({
+                'url': fullLink
+            });
+        }
+    }
+</script>
+
+
+
+
+    </div>
+
+<div class="smartphone-app-container">
+    <div class="smartphone-app-text-container" id="smartphone-app-text-container">
+        <div class="smartphone-app-text">
+            <div id="installation-help">
+
+
+        Edookit si můžete snadno přidat na Vaši plochu a používat ho jako samostatnou aplikaci. Podívejte se,         <a href="https://www.edookit.com/cs/instructions-windows" target="_blank">
+jak na to</a>.
+
+            </div>
+        </div>
+    </div>
+<div class="secondary input-simulation" id="edookit-install" style="display: none;">
+        Instalovat aplikaci Edookit
+</div>
+
+<script>
+    var deferredPrompt;
+    var button = document.getElementById("edookit-install");
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+
+        if (window.innerWidth <= 470) {
+            button.style.display = 'block';
+            document.getElementById("smartphone-app-text-container").style.display = "none";
+        }
+    });
+
+    button.addEventListener('click', (e) => {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice
+            .then((choiceResult) => {
+                deferredPrompt = null;
+            });
+    });
+</script>
+</div>
+
+    <div class="edookit-link-container">
+
+
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15" height="15"
+     viewBox="0 0 15 15">
+	<defs>
+		<path id="a" d="M0 15h14.091V0H0v15z"https://zsmarianske.edookit.net/>
+	</defs>
+	<g fill="none" fill-rule="evenodd">
+		<mask id="b" fill="#fff">
+			<use xlink:href="#a"https://zsmarianske.edookit.net/>
+		</mask>
+		<path fill="#8A8D95"
+		      d="M11.997 13.649h-.09c-.435.477-1.481 1.012-2.31 1.286l.011.044c1.454-.146 2.975-.112 3.878.021l.018-.044c-.577-.351-1.177-.845-1.507-1.307M8.664 4.855c-.694.715-1.08 1.866-1.205 2.761-.559-.71-1.473-1.508-2.433-1.776-.99-.274-2.383.431-2.51 1.425.327.268 1.42.53 2.249.262.525-.171.791-.568 1.115-.892.555.475 1.169 1.03 1.876 2.075.083-1.258.332-2.047.57-2.738.443.115.874.324 1.414.206.85-.187 1.662-.964 1.81-1.362-.612-.792-2.171-.699-2.886.039m3.574 1.886c-.185.385-.683 1.005-1.024 1.33-.517.49-1.889 1.397-3.16 1.741-1.27.344-2.91.255-3.605.093-.46-.109-1.201-.392-1.556-.63-1.11-.746-1.734-2.593-1.473-4.114.104-.61.505-1.336.93-1.764.754-.759 2.147-1.068 3.07-.883.2.04.715.217.715.217s.356-.412.509-.549c.703-.626 2.062-1.062 3.094-.787.583.155 1.296.579 1.695 1.053.992 1.181 1.388 3.09.805 4.293m1.226 2.084c.005-.056.358-1.771.356-2.435-.008-1.577.017-3.06-.987-4.295C11.512.468 9.137-.61 5.498.378 1.858 1.365.352 3.493.032 5.564c-.241 1.573.95 3.205.958 3.261a1.78 1.78 0 0 0 .732 3.085l.01.041c.053.123 1.325 2.822 5.494 2.822 4.168 0 5.44-2.7 5.494-2.822l.009-.041a1.78 1.78 0 0 0 .735-3.085M2.544 13.65h-.09c-.328.462-.93.956-1.507 1.307L.966 15c.903-.133 2.424-.167 3.877-.021l.013-.044c-.83-.274-1.875-.809-2.311-1.286"
+		      mask="url(#b)"https://zsmarianske.edookit.net/>
+	</g>
+</svg>
+<span>Made with <span class="heart">&hearts;</span> by             <a href="https://www.edookit.com" target="_blank" class="edookit-link"
+               title="Web Edookitu"><!--
+            -->Edookit<!--
+        --></a>
+ © 2022</span>
+    </div>
+</div>
+
+
+        </div>
+
+
+        <script src="https://zsmarianske.edookit.net/js/External/netteForms.min.js?v=111"></script>
+        <script src="https://zsmarianske.edookit.net/js/after-load.js?v=111"></script>
+    </body>
+
+</html>
